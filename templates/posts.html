@@ -1,0 +1,59 @@
+{% extends "base.html" %} {%block content%} {% load static %}
+<section class="content">
+  <div class="logodiv">
+    <img src="{% static 'img/twitterlogo.jpeg' %}" alt="" class="twitterlogo">
+    <h1>Home</h1>
+    
+  </div>
+  <section class="post_form">
+    <form action="/" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input style="background-color: rgb(181, 236, 236);"type="text" name="name" placeholder="Your name" required />
+      <textarea style="background-color: rgb(181, 236, 236);" name="body" placeholder="What's happening" required></textarea>
+      <input type="file" name="image" />
+      <input style="background-color: rgb(153, 233, 233);" type="submit" name="" id="tweet" value="Tweet" />
+    </form>
+  </section>
+  <section class="posts">
+    <ul>
+      {% for post in posts %}
+      <li>
+        <img
+          class="menu_icon js-menu-icon"
+          src="{% static 'img/option.png'%}"
+        />
+        <div class="menu">
+          <a href="delete/{{ post.id}}/">Delete</a><br/>
+          <a href="edit/{{ post.id}}/">Edit</a>
+        </div>
+        <div class="logo">
+          <img src="{%static 'img/images.png' %}" />
+        </div>
+        <div class="name_body">
+          <div class="name">{{post.name}}</div>
+          <div class="datetime">{{post.created_at}}</div>
+          <p>{{post.body}}</p>
+          {% if post.image.url %}
+          <img src="{{ post.image.url }}" style="width: 200px" />
+          {% endif %}
+          <form action="{% url 'like' post.pk %}" method="POST" id="likes-form">
+            {% csrf_token %}
+            <div class="row">
+              <button class="like-button" type="submit", name="post_id", value="{{post.id}}">&#10084;</button>{{post.likes}}
+            </div>
+          </form>
+          <!-- <img src="'{%static 'img/heart.png' %}" style="width: 1rem" /> -->
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  <script
+    src="https://code.jquery.com/jquery-3.6.1.js"
+    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"
+  ></script>
+  <script src="{% static 'js/post.js' %}"></script>
+</section>
+
+{% endblock %}
