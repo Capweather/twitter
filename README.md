@@ -5,14 +5,14 @@ Let’s make simple Twitter. Users can post tweets and see everyone’s them. To
 Screenshot:![](https://github.com/Capweather/twitter/assets/129704329/89021da2-a989-4a93-a14c-ab3454a48c34)
 
 # Technologies Used:
-                    Html
-                    Css
-                    Bootstrap
-                    Javascript / JQuery
-                    Django
-                    Cloudinary (To host uploaded images on CDN)
+    Html
+    Css
+    Bootstrap
+    Javascript / JQuery
+    Django
+    Cloudinary (To host uploaded images on CDN)
 # User Story:
-             Users can post tweets.
-             Users can edit tweets.
-             Users can delete tweets.
-             Users can send a like to a tweet.
+    Users can post tweets.
+    Users can edit tweets.
+    Users can delete tweets.
+    Users can send a like to a tweet.
